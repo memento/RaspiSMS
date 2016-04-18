@@ -293,6 +293,12 @@
 						echo "Sended SMS id " . $sended['id'] . " to delivered status\n";
 						continue;
 					}
+					//On gère l'accusé de réception INUTILE ("Pending")
+					if (trim($text) == 'Pending')
+					{
+						//Cet accusé signifie juste que le SMS a été passé à l'opérateur et qu'il est en attente d'acceptation par ce dernier. Useless !
+						continue;
+					}
 					
 					if (!$number)
 					{
